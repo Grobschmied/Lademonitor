@@ -1,0 +1,72 @@
+/* Grundlegende Styles und Layout */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #f2f2f2;
+}
+
+/* Header-Stil */
+header {
+  background: #317EFB;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Hauptbereich */
+main {
+  padding: 1rem;
+}
+
+/* Formular-Layout */
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+form label {
+  margin: 0.5rem 0 0.2rem;
+}
+form input {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+form button {
+  padding: 0.7rem;
+  font-size: 1rem;
+  background: #317EFB;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+form button:active {
+  background: #265DAD;
+}
+
+/* Überschrift für die Liste */
+h2 {
+  font-size: 1.2rem;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2rem;
+}
+
+/* Liste der Ladevorgänge */
+#charge-list {
+  list-style: none;
+  padding: 0;
+}
+#charge-list li {
+  background: #fff;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+#charge-list li .date {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+#charge-list li .desc {
+  /* zusätzliche Styles für Beschreibung (falls gewünscht) */
+}
