@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const ladeListe = document.getElementById("ladeListe");
 
     function ladeProfil() {
-        let gespeichertesProfil = localStorage.getItem("Lademonitor");
+        let gespeichertesProfil = localStorage.getItem("LademonitorProfil");
         if (gespeichertesProfil) {
             profilAnzeige.textContent = `Aktuelles Profil: ${gespeichertesProfil}`;
         } else {
@@ -21,13 +21,13 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Bitte einen Profilnamen eingeben!");
             return;
         }
-        localStorage.setItem("Lademonitor", profilName);
+        localStorage.setItem("LademonitorProfil", profilName);
         ladeProfil();
     });
 
     function ladeEintraege() {
         ladeListe.innerHTML = "";
-        let gespeicherteEintraege = JSON.parse(localStorage.getItem("ladeDaten")) || [];
+        let gespeicherteEintraege = JSON.parse(localStorage.getItem("LademonitorDaten")) || [];
         
         gespeicherteEintraege.forEach((eintrag, index) => {
             const li = document.createElement("li");
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
     ladeForm.addEventListener("submit", function(event) {
         event.preventDefault();
         
-        const profilName = localStorage.getItem("Lademonitor");
+        const profilName = localStorage.getItem("LademonitorProfil");
         if (!profilName) {
             alert("Bitte zuerst ein Fahrzeugprofil anlegen!");
             return;
@@ -65,18 +65,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const eintrag = { datum, kilometerstand, lademenge, ladekosten, ladesaeule, profilName };
         
-        let gespeicherteEintraege = JSON.parse(localStorage.getItem("ladeDaten")) || [];
+        let gespeicherteEintraege = JSON.parse(localStorage.getItem("LademonitorDaten")) || [];
         gespeicherteEintraege.push(eintrag);
-        localStorage.setItem("ladeDaten", JSON.stringify(gespeicherteEintraege));
+        localStorage.setItem("LademonitorDaten", JSON.stringify(gespeicherteEintraege));
         
         ladeEintraege();
         ladeForm.reset();
     });
 
     window.loescheEintrag = function(index) {
-        let gespeicherteEintraege = JSON.parse(localStorage.getItem("ladeDaten")) || [];
+        let gespeicherteEintraege = JSON.parse(localStorage.getItem("LademonitorDaten")) || [];
         gespeicherteEintraege.splice(index, 1);
-        localStorage.setItem("ladeDaten", JSON.stringify(gespeicherteEintraege));
+        localStorage.setItem("LademonitorDaten", JSON.stringify(gespeicherteEintraege));
         ladeEintraege();
     };
 
